@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MultiLLLM Dashboard</title>
+</head>
+<body>
+    <h1>Text Generator</h1>
+
+    <form id="generateForm">
+        <label for="prompt">Prompt:</label><br>
+        <textarea id="prompt" name="prompt" rows="4" cols="50"></textarea><br><br>
+
+        <label for="max_tokens">Max Tokens:</label>
+        <input type="number" id="max_tokens" name="max_tokens" value="50"><br><br>
+
+        <label for="temperature">Temperature:</label>
+        <input type="number" step="0.1" id="temperature" name="temperature" value="0.7"><br><br>
+
+        <button type="submit">Generate</button>
+    </form>
+
+    <div id="responseBox" style="margin-top: 20px;"></div>
+
+    <h2>Stats</h2>
+    <button onclick="fetchStats()">Get Stats</button>
+    <pre id="statsBox"></pre>
+
+    <script>
+        document.getElementById('generateForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const prompt = document.getElementById('prompt').value;
+            const max_tokens = parseInt(document.getElementById('max_tokens').value);
+            const temperature = parseFloat(document.getElementById('temperature').value);
+
+            const response = await fetch('/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt, max_tokens, temperature })
+            });
+
+            const data = await response.json();
+            document.getElementById('responseBox').innerText = JSON.stringify(data, null, 2);
+        });
+
+        async function fetchStats() {
+            const res = await fetch('/stats');
+            const stats = await res.json();
+            document.getElementById('statsBox').innerText = JSON.stringify(stats, null, 2);
+        }
+    </script>
+</body>
+</html>
