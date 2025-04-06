@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+flask
+requests
+PyYAML
+httpx
+openai
+python-dotenv
+tiktoken>=0.5.1
