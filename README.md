@@ -195,7 +195,3 @@ Logs will clearly show:
 - API keys for Groq & HuggingFace if cloud generation is needed
 
 ---
-
-## 📜 License
-
-MIT License — use freely, contribute back if you find it useful.
