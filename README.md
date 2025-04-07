@@ -1,3 +1,4 @@
+# Multi LLM Cost Optimizer
 # 🧠 LLM Provider Framework – Local + Cloud AI Powered Backend
 
 This project offers a modular backend framework to integrate and switch between multiple LLM providers including **Ollama (local models)**, **Groq (cloud API)**, and **HuggingFace (cloud API)**. It includes automatic fallback between providers, token counting, retry logic, and detailed logs.
