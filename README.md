@@ -70,7 +70,7 @@ export HF_API_KEY="your-hf-key"
 ## ⚙️ Running the Server
 
 ```bash
-python main.py
+python app.py
 ```
 
 The app will start on:
